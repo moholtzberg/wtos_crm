@@ -2,6 +2,5 @@ router
 page-js-ie-support
 HTML5-History-API
 inflectionizer
-# underscore-inflection
 moment
 mongo-ext

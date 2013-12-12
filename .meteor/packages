@@ -11,10 +11,10 @@ accounts-password
 accounts-base
 less
 underscore
-underscore-inflection
 http
 search
 forms
 datestrap
 moment
 mongo-ext
+inflections
