@@ -42,5 +42,5 @@ Template.users_list.records = function() {
 }
 
 Template.users_form.record = function() {
-	return Users.findOne({_id: Session.get("userId")});
+	return Users.findOne({_id: Session.get("recordId")});
 }

@@ -3,7 +3,7 @@ Template.users.events({
 	'click button#new_user' : function(event) {
 		console.log("Clicked New USer");
 		event.preventDefault();
-		Session.set("userId", null);
+		Session.set("recordId", null);
 		Meteor.Router.to("/users/new/");
 	},
 	
