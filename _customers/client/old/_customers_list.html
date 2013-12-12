@@ -1,0 +1,17 @@
+<template name="_customers_list">
+	{{templateLogger "_customers_list"}}
+	{{#if mapView}}
+	
+		{{> mapPostsList}}
+	
+	{{else}}
+
+	<div class="list-group">
+	
+		{{> customers_list}}
+	
+	</div>
+
+	{{/if}}
+	
+</template>

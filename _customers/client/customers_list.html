@@ -1,0 +1,13 @@
+<template name="customers_list">
+	{{#if mapView}}
+	
+		{{> mapPostsList}}
+	
+	{{else}}
+
+		{{#each record}}
+		<a href="/customers/{{_id}}/" class="record list-group-item {{#if checkCurrentModule 'customers'}}{{#if checkCurrentId _id}}active {{/if}}{{/if}}" id="customer_{{_id}}" customer_id="{{_id}}" data-target="tab_view" data-toggle="tab">{{name}}</a>
+		{{/each}}
+
+	{{/if}}
+</template>

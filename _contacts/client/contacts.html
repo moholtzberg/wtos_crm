@@ -1,0 +1,62 @@
+<template name="contacts">
+	
+	{{#if checkCurrentModule "contacts"}}
+		
+		<div class="col-md-4">
+		
+			<div class="panel panel-default">
+			
+				<div class="panel-heading">
+					<h3 class="panel-title"></h3>
+				</div>
+			
+				<div class="panel-body">
+					{{#isolate}}
+						{{> contacts_list}}
+					{{/isolate}}
+				</div>
+			
+				<div class="panel-footer">
+				
+					<button id="new_contact" class="btn btn-primary btn-sm">New Contact</button>
+				
+				</div>
+			
+			</div>
+
+		</div>
+		
+		{{#if currentAction}}
+		
+		<div class="col-md-8">
+
+			<div class="panel panel-default">
+
+				<div class="panel-heading">
+					<h3 class="panel-title"></h3>
+				</div>
+
+				<div class="panel-body">
+					{{#if checkCurrentAction "new"}}
+						{{> contacts_form}}
+					{{else}}
+						{{> contacts_view}}
+					{{/if}}
+				</div>
+			
+				<div class="panel-footer">
+				
+					<a id="cancel" class="btn btn-sm cancel">Cancel</a>
+				
+					<button type="submit" form="save_contact" id="save_contact" class="btn btn-primary btn-sm save">Save Contact</button>
+				
+				</div>
+			
+			</div>
+
+		</div>
+		{{/if}}
+		
+	{{/if}}
+	
+</template>

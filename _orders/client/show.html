@@ -1,0 +1,68 @@
+<template name="orders_show">
+	{{#if record}}
+	<div class="mask"> </div>
+	
+	<div class="modal" data-backdrop="true">
+		
+		<div class="modal-body">
+			
+			<form id="update_order">
+				
+				<fieldset>
+					
+					{{formInput "text" id="customer_id" value=record.customer.name class="span12" label="This is a label" placeholder=record.customer.name}}
+					
+					{{formInput "text" id="customer_address" value=record.customer.address class="span6" label="This is a label" placeholder=record.customer.address}}
+					
+					{{formInput "text" id="customer_city" value=record.customer.city class="span6" label="This is a label" placeholder=record.customer.city}}
+					
+				</fieldset>
+				
+				<legend>Other Info</legend>
+				
+				<fieldset>	
+					
+					<div class="row-fluid controls controls-row">
+						<textarea id="customer_notes" rows="4" class="span12" disabled>{{record.notes}}</textarea>
+					</div>
+					
+				</fieldset>
+				
+			</form>
+			
+			<!-- <div class="container-fluid"> -->
+				<legend>Line Items</legend>
+					<table class="table table-condensed">
+						<tr>
+							<td><strong>Item</strong></td>
+							<td><span class="pull-right"><strong>Price</strong></span></td>  
+							<td><span class="pull-right"><strong>Quantity</strong></span></td>
+							<td><span class="pull-right"><strong>Total</strong></span></td>
+						</tr>
+						{{#each record.lines}}
+						<tr>
+							<td>{{item_id}}</td>
+							<td><span class="pull-right">${{price}}</span></td>  
+							<td><span class="pull-right">{{quantity}}</span></td>
+							<td><span class="pull-right">${{total}}</span></td>
+						</tr>
+						{{/each}}
+						<tr>
+							<td></td>
+							<td></td>  
+							<td></td>
+							<td><span class="pull-right"><strong>${{record.total}}</strong></span></td>
+						</tr>
+					</table>
+			<!-- </div> -->
+			
+			
+		</div>
+		
+		<div class="modal-footer">
+			<a id="edit_order" class="btn btn-primary save">Edit Order</a>
+		</div>
+	</div>
+	{{/if}}
+	
+</template>

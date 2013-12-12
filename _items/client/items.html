@@ -1,0 +1,18 @@
+<template name="items">
+	{{templateLogger "items"}}
+		
+	{{#if checkCurrentModule "items"}}
+	
+		{{> items_list}}
+		
+		{{#each actions}}
+		
+			{{#if checkCurrentAction this}}
+				{{> crud}}
+			{{/if}}
+			
+		{{/each}}
+				
+	{{/if}}
+	
+</template>

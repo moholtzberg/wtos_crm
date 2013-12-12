@@ -1,0 +1,49 @@
+{
+  "meteor": {},
+  "dependencies": {
+    "basePackages": {
+      "router": {},
+      "inflectionizer": {},
+      "underscore-inflection": {},
+      "moment": {},
+      "mongo-ext": {}
+    },
+    "packages": {
+      "router": {
+        "git": "https://github.com/tmeasday/meteor-router.git",
+        "tag": "v0.5.4.1",
+        "commit": "d00e380dda2184b70e909fc4a0fb5358d602c586"
+      },
+      "inflectionizer": {
+        "git": "https://github.com/BeDifferential/inflectionizer.git",
+        "tag": "v0.1.0",
+        "commit": "0e8ff19a1b3426adb142354c9479ce03ebd64149"
+      },
+      "underscore-inflection": {
+        "git": "https://github.com/pius/meteor-underscore-inflection.git",
+        "tag": "v1.0.0",
+        "commit": "fe5f71cf03f10ba1bf9483a85e8290c9db028ea2"
+      },
+      "moment": {
+        "git": "https://github.com/acreeger/meteor-moment.git",
+        "tag": "v2.2.1",
+        "commit": "9ee12e714afe56b189f53076447b7b54f3012065"
+      },
+      "mongo-ext": {
+        "git": "https://github.com/alethes/meteor-mongo-ext.git",
+        "tag": "v0.1.0",
+        "commit": "05c47d5233bbc6e67e35d535e55e6fb4a1b8b6a2"
+      },
+      "page-js-ie-support": {
+        "git": "https://github.com/tmeasday/meteor-page-js-ie-support.git",
+        "tag": "v1.3.5",
+        "commit": "b99ed8380aefd10b2afc8f18d9eed4dd0d8ea9cb"
+      },
+      "HTML5-History-API": {
+        "git": "https://github.com/tmeasday/meteor-HTML5-History-API.git",
+        "tag": "v4.0.0",
+        "commit": "dc4965f1424cfca625ec3fbea17eace03f8e32c5"
+      }
+    }
+  }
+}

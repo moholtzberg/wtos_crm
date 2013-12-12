@@ -1,0 +1,5 @@
+<template name="contacts_list">
+	{{#each record}}
+	<a href="/contacts/{{_id}}/" class="record list-group-item {{#if checkCurrentModule 'contacts'}}{{#if checkCurrentId _id}}active {{/if}}{{/if}}" id="customer_{{_id}}" contact_id="{{_id}}" data-target="tab_view" data-toggle="tab">{{fullName}}</a>
+	{{/each}}
+</template>

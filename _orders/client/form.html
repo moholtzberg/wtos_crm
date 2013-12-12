@@ -1,0 +1,116 @@
+<template name="orders_form">
+	
+	<fieldset>	
+		
+		<div id="customer_id" class="form-group col-sm-12">
+			<label>Customer</label>
+			<select id="order_customer_id" name="customer_id" value="{{record.customer_id}}" class="form-control input-sm">
+				{{#each customers}}
+				<option value="{{_id}}">{{name}}</option>
+				{{/each}}
+			</select>
+		</div>
+		
+		<div id="first_name" class="form-group col-sm-6">
+			<label>Record Number</label>
+			<input type="text" id="record_number" name="record_number" value="{{record.recordNumber}}" class="form-control input-sm">
+		</div>
+		
+		<div id="last_name" class="form-group col-sm-6">
+			<label>Last Name</label>
+			<input type="text" id="last_name" name="last_name" value="{{record.last_name}}" class="form-control input-sm">
+		</div>
+		
+		<div id="phone" class="form-group col-sm-6">
+			<label>Phone</label>
+			<input type="text" id="phone" name="phone" value="{{record.phone}}" class="form-control input-sm">
+		</div>
+		
+		<div id="email" class="form-group col-sm-6">
+			<label>Email</label>
+			<input type="text" id="email" name="email" value="{{record.email}}" class="form-control input-sm">
+		</div>
+		<div class="clearfix"></div>
+		<div id="notes" class="form-group col-sm-12">
+			<label>Notes</label>
+			<textarea id="notes" name="notes" rows="4" class="form-control input-sm">{{record.notes}}</textarea>
+		</div>
+		
+	</fieldset>
+	
+	<fieldset>	
+		
+		<table class="table table-condensed">
+			<tr>
+				<td><strong>Item</strong></td>
+				<td><span class="pull-right"><strong>Price</strong></span></td>  
+				<td><span class="pull-right"><strong>Quantity</strong></span></td>
+				<td><span class="pull-right"><strong>Total</strong></span></td>
+			</tr>
+			{{#if record}}
+				{{#each record.lines}}
+				<tr>
+					<td>{{item.number}}</td>
+					<td><span class="pull-right">${{price}}</span></td>  
+					<td><span class="pull-right">${{quantity}}</span></td>
+					<td><span class="pull-right">${{total}}</span></td>
+				</tr>
+				{{/each}}
+			{{else}}
+				{{#each lineItems}}
+				<tr>
+					<td>{{item.number}}</td>
+					<td><span class="pull-right">${{price}}</span></td>  
+					<td><span class="pull-right">---{{quantity}}</span></td>
+					<td><span class="pull-right">${{total}}</span></td>
+				</tr>
+				{{/each}}
+			{{/if}}
+			<tr>
+				<td></td>
+				<td></td>  
+				<td>Total</td>
+				<td><span class="pull-right"><strong>{{subTotal}}</strong></span></td>
+			</tr>
+		</table>
+		
+		<div class="col-md-12 well">
+			Margin: %{{margin}} <br/>
+			Profit: {{profit}}
+		</div>
+		
+		<input type="hidden" id="order_id" name="order_id" value="record._id">
+		
+		<div id="quantity" class="form-group col-md-1">
+			<label>Quantity</label>
+			<input type="text" id="quantity" name="quantity" class="form-control input-sm">
+		</div>
+		
+		<div id="item_id" class="form-group col-md-4">
+			<label>Item</label>
+			<select id="item_id" name="item_id" class="form-control input-sm">
+				<option>Select an Item</option>
+				{{#each items}}
+				<option value="{{_id}}" id="{{_id}}">{{number}}</option>
+				{{/each}}
+			</select>
+		</div>
+		
+		<div id="cost" class="form-group col-md-3">
+			<label>Cost</label>
+			<input type="text" id="cost" name="cost" class="form-control input-sm">
+		</div>
+		
+		<div id="price" class="form-group col-md-3">
+			<label>Price</label>
+			<input type="text" id="price" name="price" class="form-control input-sm">
+		</div>
+		
+		<div class="form-group col-md-1">
+			<label>Add</label>
+			<a id="add_item" class="btn" name="add_item">+</a>
+		</div>
+		
+	</fieldset>
+	
+</template>

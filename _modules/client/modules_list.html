@@ -1,0 +1,7 @@
+<template name="modules_list">
+
+	{{#each record}}
+	<a href="/modules/{{_id}}/" class="record list-group-item {{#if checkCurrentModule 'modules'}}{{#if checkCurrentId _id}}active {{/if}}{{/if}}" id="module_{{_id}}" module_id="{{_id}}" data-target="tab_view" data-toggle="tab">{{name}}</a>
+	{{/each}}
+	
+</template>

@@ -1,0 +1,66 @@
+<template name="users_form">
+	
+	<fieldset>	
+		
+		<input type="hidden" id="user_id" value="{{record._id}}"/>
+		
+		<div id="frist_name" class="form-group col-md-6">
+			<label>First Name</label>
+			<input type="text" id="user_first_name" name="user_first_name" value="{{record.profile.first_name}}" class="form-control input-sm">
+		</div>
+		
+		<div id="last_name" class="form-group col-md-6">
+			<label>Last Name</label>
+			<input type="text" id="user_last_name" name="user_last_name" value="{{record.profile.last_name}}" class="form-control input-sm">
+		</div>
+		
+		<div class="clearfix"></div>
+		
+		<div id="address" class="form-group col-md-12">
+			<label>Address</label>
+			<input type="text" id="user_address" name="user_address" value="{{record.profile.address}}" class="form-control input-sm">
+		</div>
+		
+		<div class="clearfix"></div>
+		
+		<div id="city" class="form-group col-md-6">
+			<label>City</label>
+			<input type="text" id="user_city" name="user_city" value="{{record.profile.city}}" class="form-control input-sm">
+		</div>
+		
+		<div id="state" class="form-group col-md-2">
+			<label>State</label>
+			<input type="text" id="user_state" name="user_state" value="{{record.profile.state}}" class="form-control input-sm">
+		</div>
+			
+		<div id="zip" class="form-group col-md-4">
+			<label>Zip</label>
+			<input type="text" id="user_zip" name="user_zip"  value="{{record.profile.zip}}" class="form-control input-sm col-md-12">
+		</div>
+		
+		<div id="phone" class="form-group col-md-6">
+			<label>Phone</label>
+			<input type="text" id="user_phone" name="user_phone" value="{{record.profile.phone}}" class="form-control input-sm">
+		</div>
+		
+		<div id="email" class="form-group col-md-6">
+			<label>Email</label>
+			<input type="text" id="user_email" name="user_email" value="{{record.profile.email}}" class="form-control input-sm">
+		</div>
+		
+		<div class="clearfix"></div>
+		{{#if currentUser.is_admin}}
+		<div id="admin" class="form-group col-md-12">
+			<div class="checkbox">
+				<label>
+					<input type="checkbox" id="user_is_admin"{{#if record.is_admin}}checked{{/if}}>
+					Is Admin User
+				</label>
+			</div>
+		</div>
+		{{/if}}
+		
+		
+	</fieldset>
+	
+</template>

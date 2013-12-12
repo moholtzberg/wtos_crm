@@ -1,0 +1,7 @@
+<template name="nav">
+	<ul class="nav nav-tabs nav-stacked">
+		{{#each modules}}
+			<li><a href="/{{slug}}" class="record" id="module_{{_id}}" module_id="{{_id}}"><i class="fa {{icon}}"></i>{{name}}</a></li>
+		{{/each}}
+	</ul>
+</template>

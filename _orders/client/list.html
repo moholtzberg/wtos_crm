@@ -1,0 +1,19 @@
+<template name="orders_list">
+	{{templateLogger "orders_list"}}
+	
+	<div class="list-group">
+		{{#each record}}
+		<a href="/orders/{{_id}}/" class="record list-group-item {{#if checkCurrentModule 'orders'}}{{#if checkCurrentId _id}}active {{/if}}{{/if}}" id="order_{{_id}}" order_id="{{_id}}" data-target="tab_view" data-toggle="tab">{{_id}}</a>
+		{{/each}}
+	</div>
+
+	<ul class="pagination pagination-sm">
+		<li><a href="#">&laquo;</a></li>
+		<li><a href="#">1</a></li>
+		<li><a href="#">2</a></li>
+		<li><a href="#">3</a></li>
+		<li><a href="#">4</a></li>
+		<li><a href="#">5</a></li>
+		<li><a href="#">&raquo;</a></li>
+	</ul>
+</template>

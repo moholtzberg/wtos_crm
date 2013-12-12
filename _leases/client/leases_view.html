@@ -1,0 +1,35 @@
+<template name="leases_view">
+{{#if currentAction}}
+	{{#if checkCurrentAction "new"}}
+		{{> leases_form}}
+	{{else}}
+	
+		{{#isolate}}
+		<ul class="nav nav-tabs">
+			<li {{#if checkCurrentAction "view"}}class="active"{{/if}}>
+				<a href="/leases/{{record._id}}#view" data-target="#" class="subModule" id="view" data-toggle="tab">View / Edit</a>
+			</li>
+			<li {{#if checkCurrentAction "equipments"}}class="active"{{/if}}>
+				<a href="/leases/{{record._id}}#equipments" data-target="#" class="subModule" id="equipments" data-toggle="tab">Equipments</a>
+			</li>
+		</ul>
+		{{/isolate}}
+	
+	{{#isolate}}
+	
+	<div class="tab-content">
+		
+		<br />
+		
+		{{#unless checkCurrentAction "view"}}
+			{{{subModule}}}
+		{{else}}
+			{{> leases_form}}
+		{{/unless}}
+		
+	</div>
+	
+	{{/isolate}}
+	{{/if}}
+{{/if}}
+</template>

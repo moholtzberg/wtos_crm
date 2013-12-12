@@ -1,0 +1,84 @@
+<template name="leases_form">
+	<form id="save_lease" class="row" role="form">
+		
+		<fieldset>	
+		
+			<div id="user_id" class="form-group col-md-12">
+				<label>User</label>
+				<select id="user_id" name="user_id" class="form-control input-sm">
+					{{#each users}}
+					<option value="{{_id}}">{{full_name}}</option>
+					{{/each}}
+				</select>
+			</div>
+		
+			<div class="clearfix"></div>
+		
+			<div id="customer_id" class="form-group col-md-6">
+				<label>Customer</label>
+				<select id="customer_id" name="customer_id" class="form-control input-sm">
+					{{#each customers}}
+					<option value="{{_id}}" {{selected _id record.customer_id "selected"}}>{{name}}</option>
+					{{/each}}
+				</select>
+			</div>
+		
+			<div id="vendor_id" class="form-group col-md-6">
+				<label>Vendor</label>
+				<select id="vendor_id" name="vendor_id" class="form-control input-sm">
+					{{#each vendors}}
+					<option value="{{_id}}" {{selected _id record.vendor_id "selected"}}>{{name}}</option>
+					{{/each}}
+				</select>
+			</div>
+		
+			<div id="start_date" class="form-group col-md-3">
+				<label>Start Date</label>
+				<div class="input-group">
+					<input type="text" id="start_date" name="start_date" value="{{record.start_date}}" class="form-control input-sm">
+					<span class="input-group-addon"><i class="fa fa-th"></i></span>
+				</div>
+			</div>
+		
+			<div id="lease_term" class="form-group col-md-3">
+				<label>Lease Term</label>
+				<select id="lease_term" name="lease_term" class="form-control input-sm">
+					<option value="24" {{selected "24" record.lease_term "selected"}}>24</option>
+					<option value="36" {{selected "36" record.lease_term "selected"}}>36</option>
+					<option value="39" {{selected "39" record.lease_term "selected"}}>39</option>
+					<option value="42" {{selected "42" record.lease_term "selected"}}>42</option>
+					<option value="48" {{selected "48" record.lease_term "selected"}}>48</option>
+					<option value="60" {{selected "60" record.lease_term "selected"}}>60</option>
+					<option value="63" {{selected "63" record.lease_term "selected"}}>63</option>
+				</select>
+			</div>
+		
+			<div id="payment" class="form-group col-md-3">
+				<label>Payment</label>
+				<div class="input-group">
+					<span class="input-group-addon"><i class="fa fa-usd"></i></span>
+					<input type="text" id="payment" name="payment" value="{{record.payment}}" class="form-control input-sm">
+				</div>
+			</div>
+		
+			<div id="billing_cycle" class="form-group col-md-3">
+				<label>Billing Cycle</label>
+				<select id="billing_cycle" name="billing_cycle" class="form-control input-sm">
+					<option value="monthly" {{selected "monthly" record.billing_cycle "selected"}}>Monthly</option>
+					<option value="quarterly" {{selected "quarterly" record.billing_cycle "selected"}}>Quarterly</option>
+					<option value="annually" {{selected "annually" record.billing_cycle "selected"}}>Annually</option>
+				</select>
+			</div>
+		
+			<div class="clearfix"></div>
+		
+			<div id="notes" class="form-group col-md-12">
+				<label>Notes</label>
+				<textarea id="customer_notes" name="notes" rows="4" class="form-control input-sm">{{record.notes}}</textarea>
+			</div>
+		
+		</fieldset>
+		
+	</form>
+	
+</template>

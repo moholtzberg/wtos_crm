@@ -1,0 +1,57 @@
+<template name="users">
+	
+	{{#if checkCurrentModule "users"}}
+	
+	<div class="col-md-6">
+		
+		<div class="panel panel-default">
+			
+			<div class="panel-heading">
+				<h3 class="panel-title"></h3>
+			</div>
+			
+			<div class="panel-body">
+				{{#isolate}}
+					{{> users_list}}
+				{{/isolate}}
+			</div>
+			
+			<div class="panel-footer">
+				
+				<button id="new_user" class="btn btn-primary btn-sm">New User</button>
+				
+			</div>
+			
+		</div>
+		
+	</div>
+	
+	<div class="col-md-6">
+		
+		<div class="panel panel-default">
+			
+			<div class="panel-heading">
+				<h3 class="panel-title"></h3>
+			</div>
+			
+			<div class="panel-body">
+				{{#isolate}}
+					{{> users_view}}
+				{{/isolate}}
+			</div>
+			
+			<div class="panel-footer">
+				
+				<a id="cancel" class="btn btn-sm cancel">Cancel</a>
+				
+				<button type="submit" form="save_user" id="save_user" class="btn btn-primary btn-sm save">Save User</a>
+				
+			</div>
+			
+		</div>
+		
+	</div>
+	
+	{{/if}}
+	
+</template>

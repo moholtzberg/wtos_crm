@@ -1,0 +1,12 @@
+<template name="actions">
+	<div class="btn-group pull-right">
+		<a class="btn btn-mini btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+		<ul class="dropdown-menu">
+			<li><a id="view_{{module}}_{{id}}" {{module}}_id="{{_id}}" class="view_{{module}}" href="#"><i class="icon-search"></i> View</a></li>
+			<li><a id="edit_{{module}}_{{id}}" {{module}}_id="{{_id}}" class="edit_{{module}}" href="#"><i class="icon-pencil"></i> Edit</a></li>
+			<li><a id="delete_{{module}}_{{id}}" {{module}}_id="{{_id}}" class="delete_{{module}}" href="#"><i class="icon-trash"></i> Delete</a></li>
+			<li class="divider"></li>
+			<li><a id="message_contact_{{id}}" {{module}}_id="{{_id}}" class="message_contact" href="#"><i class="icon-envelope"></i> Message</a></li>
+		</ul>
+	</div>
+</template>

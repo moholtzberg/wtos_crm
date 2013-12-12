@@ -1,0 +1,42 @@
+<template name="modules_form">
+	<fieldset>	
+		
+		<div id="name" class="form-group col-md-4">
+			<label>Name</label>
+			<input type="text" id="name" name="name" value="{{record.name}}" class="form-control input-sm">
+		</div>
+		
+		<div id="slug" class="form-group col-md-4">
+			<label>Slug</label>
+			<input type="text" id="slug" name="slug" value="{{record.slug}}" class="form-control input-sm">
+		</div>
+		
+		<div id="icon" class="form-group col-md-4">
+			<label>Icon</label>
+			<input type="text" id="icon" name="icon" value="{{record.icon}}" class="form-control input-sm">
+		</div>
+		
+		{{#if currentUser.is_admin}}
+		<div id="admin_only" class="form-group col-md-4">
+			<div class="checkbox">
+				<label>
+					<input type="checkbox" id="admin_only"{{#if record.admin_only}}checked{{/if}}>
+					Is Admin Only
+				</label>
+			</div>
+		</div>
+		
+		<div id="active" class="form-group col-md-4">
+			<div class="checkbox">
+				<label>
+					<input type="checkbox" id="active"{{#if record.active}}checked{{/if}}>
+					Is Active
+				</label>
+			</div>
+		</div>
+		
+		{{/if}}
+		
+	</fieldset>
+	
+</template>

@@ -1,0 +1,54 @@
+<template name="contacts_form">
+	
+	<form id="save_contact">
+	
+		<fieldset>
+		
+			<div id="customer_id" class="form-group col-md-12">
+				<label>Customer</label>
+				<select id="customer_id" name="customer_id" value="{{record.customer_id}}" class="form-control input-sm">
+					{{#each customers}}
+					<option value="{{_id}}" {{selected _id record.customer_id "selected"}}>{{name}}</option>
+					{{/each}}
+				</select>
+			</div>
+		
+			<div class="clearfix"></div>
+		
+			<div id="title" class="form-group col-md-2">
+				<label>Title</label>
+				<select id="title" name="title" value="{{record.title}}" class="form-control input-sm">
+					<option value="Mr." {{selected "Mr." record.title "selected"}}>Mr.</option>
+					<option value="Mrs." {{selected "Mrs." record.title "selected"}}>Mrs.</option>
+					<option value="Ms." {{selected "Ms." record.title "selected"}}>Ms.</option>
+					<option value="Dr." {{selected "Dr." record.title "selected"}}>Dr.</option>
+					<option value="Rabbi" {{selected "Rabbi" record.title "selected"}}>Rabbi</option>
+					<option value="Father" {{selected "Father" record.title "selected"}}>Father</option>
+				</select>
+			</div>
+		
+			<div id="first_name" class="form-group col-md-5">
+				<label>First Name</label>
+				<input type="text" id="first_name" name="first_name" value="{{record.first_name}}" class="form-control input-sm">
+			</div>
+		
+			<div id="last_name" class="form-group col-md-5">
+				<label>Last Name</label>
+				<input type="text" id="last_name" name="last_name" value="{{record.last_name}}" class="form-control input-sm">
+			</div>
+		
+			<div id="phone" class="form-group col-md-6">
+				<label>Phone</label>
+				<input type="text" id="phone" name="phone" value="{{record.phone}}" class="form-control input-sm">
+			</div>
+		
+			<div id="email" class="form-group col-md-6">
+				<label>Email</label>
+				<input type="text" id="email" name="email" value="{{record.email}}" class="form-control input-sm">
+			</div>
+		
+		</fieldset>
+		
+	</form>
+	
+</template>

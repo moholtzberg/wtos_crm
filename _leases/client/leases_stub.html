@@ -1,0 +1,29 @@
+<template name="leases_stub">
+	<div class="panel-group" id="accordion">
+		{{#if record.leases}}
+			{{#each record.leases}}
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4 class="panel-title">
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse_{{_id}}">
+								${{this.payment}} x {{this.term}}
+							</a>
+						</h4>
+					</div>
+					<div id="collapse_{{_id}}" class="panel-collapse collapse">
+						<div class="panel-body">
+							<stong>Make: </strong>{{make.name}}<br/>
+							<stong>Model: </strong>{{model.number}}<br/>
+							<stong>Equipment Number: </strong>{{number}}<br/>
+							<stong>Serial Number: </strong>{{serial}}<br/>
+							<stong>User: </strong>{{owner.profile.name}}<br/>
+						</div>
+					</div>
+				</div>
+			{{/each}}
+				
+		{{else}}
+			<p>No Leases</p>
+		{{/if}}
+	</div>
+</template>

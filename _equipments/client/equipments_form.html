@@ -1,0 +1,150 @@
+<template name="equipments_form">
+	
+	<form id="save_equipment" class="row" role="form">
+	
+		<fieldset>
+		
+			<div id="make_id" class="form-group col-md-6">
+				<label>Make</label>
+				<select id="make_id" name="make_id" value="{{record.make_id}}" class="form-control input-sm">
+					{{#each makes}}
+					<option value="{{_id}}" {{selected _id record.make_id "selected"}}>{{name}}</option>
+					{{/each}}
+				</select>
+			</div>
+		
+			<div id="model_id" class="form-group col-md-6">
+				<label>Model</label>
+				<select id="model_id" name="model_id" value="{{record.model_id}}" class="form-control input-sm">
+					{{#each models}}
+					<option value="{{_id}}" {{selected _id record.model_id "selected"}}>{{number}}</option>
+					{{/each}}
+				</select>
+			</div>
+		
+			<div id="number" class="form-group col-md-6">
+				<label>Number</label>
+				<input type="text" id="number" name="number" value="{{record.number}}" class="form-control input-sm">
+			</div>
+		
+			<div id="serial_number" class="form-group col-md-6">
+				<label>Serial Number</label>
+				<input type="text" id="serial_number" name="serial_number" value="{{record.serial_number}}" class="form-control input-sm">
+			</div>
+		
+			<div id="customer_id" class="form-group col-md-6">
+				<label>Customer</label>
+				<select id="customer_id" name="customer_id" value="{{record.customer_id}}" class="form-control input-sm">
+					{{#each customers}}
+					<option value="{{_id}}">{{name}}</option>
+					{{/each}}
+				</select>
+			</div>
+			
+			<div id="customer_id" class="form-group col-md-6">
+				<label>Lease</label>
+				<select id="lease_id" name="lease_id" value="{{record.lease_id}}" class="form-control input-sm">
+					{{#each leases}}
+					<option value="{{_id}}">{{start_date}} - {{endDate}}</option>
+					{{/each}}
+				</select>
+			</div>
+		
+			<div id="user_id" class="form-group col-md-6">
+				<label>User</label>
+				<select id="user_id" name="user_id" value="{{record.user_id}}" class="form-control input-sm">
+					{{#each users}}
+					<option value="{{_id}}" {{selected _id record.user_id "selected"}}>{{full_name}}</option>
+					{{/each}}
+				</select>
+			</div>
+		
+			<div id="competitor_id" class="form-group col-md-6">
+
+				<label>Competitor</label>
+
+				<div class="input-group">
+				
+					<span class="input-group-addon">Is Prospect?
+						<input type="checkbox" id="is_prospect" {{#if prospect}}checked{{/if}}>
+					</span>
+				
+					<input type="text" id="tac" name="tac" class="form-control input-sm dropdown-toggle" {{#unless prospect}}disabled{{/unless}} value="{{reocrd.tac}}">
+
+				</div>
+			
+				<div class="dropdown open">
+					{{#if searchResults}}
+					<ul role="menu" areia-labelledby="tac" class="dropdown-menu">
+						{{#each searchResults}}
+							<li><a value="{{_id}}">{{name}}</a></li>
+						{{/each}}
+					</ul>
+					{{/if}}
+				</div>
+
+			</div>
+		
+		</fieldset>
+	
+		<hr />
+	
+		<fieldset>
+
+			<div id="mono_number_of_copies" class="form-group col-md-4">
+				<label>Number of Pages</label>
+				<div class="input-group">
+					<span class="input-group-addon">Mono&nbsp
+						<input id="mono_service_included" name="mono_service_included" type="checkbox">
+					</span>
+					<input type="text" id="mono_number_of_copies" name="mono_number_of_copies" value="{{record.mono_number_of_copies}}" class="form-control input-sm">
+				</div>
+
+			</div>
+
+			<div id="mono_service_cycle" class="form-group col-md-4">
+				<label>Per Cycle</label>
+				<select id="mono_service_cycle" name="mono_service_cycle" class="form-control input-sm">
+					<option value="monthly" {{selected "monthly" record.service_cycle "selected"}}>Monthly</option>
+					<option value="quarterly" {{selected "quarterly" record.service_cycle "selected"}}>Quarterly</option>
+					<option value="annually" {{selected "annually" record.service_cycle "selected"}}>Annually</option>
+				</select>
+			</div>
+
+			<div id="mono_overage_rate" class="form-group col-md-4">
+				<label>Overage Rate</label>
+				<div class="input-group">
+					<span class="input-group-addon"><i class="fa fa-usd"></i></span>
+					<input type="text" id="mono_overage_rate" name="mono_overage_rate" value="{{record.mono_overage_rate}}" class="form-control input-sm">
+				</div>
+			</div>
+
+			<div id="color_number_of_copies" class="form-group col-md-4">
+				<div class="input-group">
+					<span class="input-group-addon">Color&nbsp
+						<input id="color_service_included" name="color_service_included" type="checkbox">
+					</span>
+					<input type="text" id="color_number_of_copies" name="color_number_of_copies" value="{{record.color_number_of_copies}}" class="form-control input-sm">
+				</div>
+			</div>
+
+			<div id="color_service_cycle" class="form-group col-md-4">
+				<select id="color_service_cycle" name="color_service_cycle" class="form-control input-sm">
+					<option value="monthly" {{selected "monthly" record.service_cycle "selected"}}>Monthly</option>
+					<option value="quarterly" {{selected "quarterly" record.service_cycle "selected"}}>Quarterly</option>
+					<option value="annually" {{selected "annually" record.service_cycle "selected"}}>Annually</option>
+				</select>
+			</div>
+
+			<div id="color_overage_rate" class="form-group col-md-4">
+				<div class="input-group">
+					<span class="input-group-addon"><i class="fa fa-usd"></i></span>
+					<input type="text" id="color_overage_rate" name="color_overage_rate" value="{{record.color_overage_rate}}" class="form-control input-sm">
+				</div>
+			</div>
+	
+		</fieldset>
+	
+	</form>
+	
+</template>

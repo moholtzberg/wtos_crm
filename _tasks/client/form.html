@@ -1,0 +1,23 @@
+<template name="tasks_form">
+	
+	<fieldset>
+		
+		<div class="row-fluid">
+			{{formInput "text" id="task_description" value=record.description span="12" class="span12" label="Description"}}
+		</div>
+		
+		<div class="row-fluid">
+			{{formInput "select" id="task_customer_id" span="12" selectOptions=customers selectValue=record.customer_id selectDisplay="name" label="Select Customer"}}
+		</div>
+		
+		<div class="row-fluid">
+			{{formInput "text" id="task_due_date" value=record.dueDateInput span="12" label="Due Date"}}
+		</div>
+		
+		<div class="row-fluid">
+			{{formInput "textarea" id="task_notes" value=record.notes span="12" label="Notes" rows="4"}}
+		</div>
+		
+	</fieldset>
+	
+</template>

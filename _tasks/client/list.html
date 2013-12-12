@@ -1,0 +1,56 @@
+<template name="tasks_list">
+	<div class="container-fluid">
+		<table class="table table-hover table-condensed">
+			<tr>
+				<th>Complete</th>
+				<th>Description</th>
+				<th>Customer</th>
+				<th>Due Date</th>
+				<th><span class="pull-right">Actions</span></th>
+			</tr>
+			{{#each record}}
+			<tr>
+				
+				<td>{{#if complete}}<del>{{/if}}<input type="checkbox" name="commplete" id="{{_id}}" value="{{complete}}" {{#if complete}}checked{{/if}}>{{#if complete}}</del>{{/if}}</td>
+				<td>{{#if complete}}<del>{{/if}}{{description}}{{#if complete}}</del>{{/if}}</td>
+				<td>{{#if complete}}<del>{{/if}}{{customer.name}}{{#if complete}}</del>{{/if}}</td>
+				<td>{{#if complete}}<del>{{/if}}{{dueDateDisplay}}{{#if complete}}</del>{{/if}}</td>
+				
+				<td>
+					<div class="btn-group pull-right">
+						<button id="view_task_{{_id}}" task_id="{{_id}}" class="btn btn-mini view_task">View</button>
+						<button id="edit_task_{{_id}}" task_id="{{_id}}" class="btn btn-mini edit_task">Edit</button>
+						<button id="delete_task_{{_id}}" contaact_id="{{_id}}" class="btn btn-mini delete_task">Delete</button>
+					</div>
+				</td>
+			</tr>
+			{{/each}}
+		</table>
+		
+		<div class="row-fluid">
+			
+			<div class="span3">
+				<button id="new_task" class="btn btn-primary">New Task</button>
+			</div>
+			
+			<div class="span6">
+				
+				<div class="pagination pagination-centered">
+					<ul>
+						<li class="disabled"><a href="#">&laquo;</a></li>
+						<li class="active"><a href="#">1</a></li>
+						<li><a href="#">2</a></li>
+						<li><a href="#">&raquo;</a></li>
+					</ul>
+				</div>
+				
+			</div>
+			
+			<div class="span3">
+				
+			</div>
+			
+		</div>
+		
+	</div>
+</template>

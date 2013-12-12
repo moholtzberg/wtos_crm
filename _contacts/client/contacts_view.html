@@ -1,0 +1,29 @@
+<template name="contacts_view">
+	{{#unless checkCurrentAction "new"}}
+		{{#isolate}}
+		<ul class="nav nav-tabs">
+			<li {{#if checkCurrentAction "view"}}class="active"{{/if}}>
+				<a href="/contacts/{{record._id}}#veiw" data-target="#" class="subModule" id="view" data-toggle="tab">View / Edit</a>
+			</li>
+			<li {{#if checkCurrentAction "messages"}}class="active"{{/if}}>
+				<a href="/contacts/{{record._id}}#messages" data-target="#" class="subModule" id="messages" data-toggle="tab">Messages</a>
+			</li>
+			<li {{#if checkCurrentAction "tasks"}}class="active"{{/if}}>
+				<a href="/contacts/{{record._id}}#tasks" data-target="#" class="subModule" id="tasks" data-toggle="tab">Tasks</a>
+			</li>
+		</ul>
+		{{/isolate}}
+		<div class="tab-content">
+		
+			<br />
+		
+			{{#unless checkCurrentAction "view"}}
+				{{{subModule}}}
+			{{else}}
+				{{> contacts_form}}
+			{{/unless}}
+		
+		</div>
+	{{/unless}}
+	
+</template>

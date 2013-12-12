@@ -1,0 +1,5 @@
+<template name="users_list">
+	{{#each records}}
+	<a href="/users/{{_id}}/" class="record list-group-item {{#if checkCurrentModule 'users'}}{{#if checkCurrentId _id}}active {{/if}}{{/if}}" id="user_{{_id}}" user_id="{{_id}}" data-target="tab_view" data-toggle="tab">{{full_name}}</a>
+	{{/each}}
+</template>

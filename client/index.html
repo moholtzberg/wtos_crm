@@ -1,0 +1,60 @@
+<head>
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" rel="stylesheet">
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.9.3/typeahead.min.js"></script>
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Meteor CRM</title>
+</head>
+
+<body>
+	
+	{{#if currentUser}}
+		{{> main}}
+	{{else}}
+		{{> login}}
+	{{/if}}
+	
+</body>
+
+<template name="main">
+	
+	<div id="main" class="row">
+		
+		<nav id="topnav" class="navbar navbar-default navbar-static-top">
+			
+			<button id="nav-toggle" class="btn btn-default nav-toggle">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			
+			<button id="logout" class="btn btn-primary">
+				<i class="fa fa-sign-out"></i> Sign Out
+			</button>
+			
+			<a class="navbar-brand">Welcome {{currentUser.profile.first_name}}</a>
+			
+		</nav>
+		
+		<div id="nav_panel" class="hidden-xs col-sm-2 col-md-2 col-lg-2">
+			{{> nav}}
+		</div>
+
+		<div id="main_panel" class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
+			
+			<!-- <ol class="breadcrumb">
+							<li><a href="/{{currentModule}}">{{currentModule}}</a></li>
+							<li><a href="#">{{currentAction}}</a></li>
+						</ol> -->
+			
+			{{#isolate}}
+				{{renderPage}}
+			{{/isolate}}
+				
+		</div>
+	
+	</div>
+	
+</template>

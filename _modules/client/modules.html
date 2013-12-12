@@ -1,0 +1,68 @@
+<template name="modules">
+	{{#if checkCurrentModule "modules"}}
+	
+	<div class="col-md-4">
+		
+		<div class="panel panel-default">
+			
+			<div class="panel-heading">
+				<h3 class="panel-title"></h3>
+			</div>
+			
+			<div class="panel-body">
+				{{#isolate}}
+					{{> modules_list}}
+				{{/isolate}}
+			</div>
+			
+			<div class="panel-footer">
+				
+				<button id="new_module" class="btn btn-primary btn-sm">New Module</button>
+				
+			</div>
+			
+		</div>
+		
+	</div>
+	{{#if currentAction}}
+	<div class="col-md-8">
+		
+		<div class="panel panel-default">
+			
+			<div class="panel-heading">
+				<h3 class="panel-title"></h3>
+			</div>
+			
+			<div class="panel-body">
+				{{#if checkCurrentAction "new"}}
+				<form id="save_customer">
+					{{> modules_form}}
+				</form>
+				{{else}}
+					{{> modules_view}}
+				{{/if}}
+			</div>
+			
+			<div class="panel-footer">
+				
+				<a id="cancel" class="btn btn-sm cancel">Cancel</a>
+				
+				<button type="submit" form="save_module" id="save_module" class="btn btn-primary btn-sm save">Save Module</a>
+					
+			</div>
+			
+		</div>
+		
+	</div>
+	{{/if}}
+	{{/if}}
+	
+</template>
+
+<template name="filters">
+	{{#if filters}}
+	<ul id="filter_list" class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+		{{#each filters}}<li><a href="#" id="{{this}}" class="filter">{{this}}</a></li>{{/each}}
+	</ul>
+	{{/if}}
+</template>

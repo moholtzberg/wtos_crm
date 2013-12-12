@@ -1,0 +1,39 @@
+<template name="items_list">
+	{{templateLogger "items_list"}}
+	<div class="container-fluid">
+		<table class="table table-hover table-condensed">
+			<tr>
+				<th>Make</th>
+				<th>Number</th>
+				<th>Price</th>
+				<th>Email</th>
+				<th>Phone</th>
+				<th><span class="pull-right">Actions</span></th>
+			</tr>
+			{{#isolate}}
+			
+			{{#each record}}
+			
+				<tr>
+					<td>{{make.name}}</td>
+					<td>{{number}}</td>
+					<td>{{truncate number length="2" ending="..."}}</td>
+					<td>{{email}}</td>
+					<td>{{phone}}</td>
+					<td>
+						<div class="btn-group pull-right">
+							<button id="view_item_{{_id}}" item_id="{{_id}}" class="btn btn-mini view_item">View</button>
+							<button id="edit_item_{{_id}}" item_id="{{_id}}" class="btn btn-mini edit_item">Edit</button>
+							<button id="delete_item_{{_id}}" item_id="{{_id}}" class="btn btn-mini delete_item">Delete</button>
+						</div>
+					</td>
+				</tr>
+			
+			{{/each}}
+			{{/isolate}}
+		</table>
+		
+		<button id="new_item" class="btn btn-primary">New Item</button>
+		
+	</div>
+</template>

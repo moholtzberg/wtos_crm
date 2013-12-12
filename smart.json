@@ -1,0 +1,9 @@
+{
+  "packages": {
+    "router": {},
+    "inflectionizer": {},
+    "underscore-inflection": {},
+    "moment": {},
+    "mongo-ext": {}
+  }
+}

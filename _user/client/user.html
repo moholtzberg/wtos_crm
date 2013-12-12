@@ -1,0 +1,39 @@
+<template name="user_profile_dropdown">
+	{{#if currentUser}}
+	
+	<li class="dropdown <!-- divider-vertical -->">
+		
+		<a class="dropdown-toggle" data-toggle="dropdown">
+			{{currentUser.profile.name}} <b class="caret"></b>
+		</a>
+		
+		<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+			<!-- <li><a><i class="icon icon-user"></i> Manage Profile</a></li>
+			<li><a><i class="icon icon-wrench"></i> Account Settings</a></li>
+			<li><a><i class="icon icon-refresh"></i> Change Password</a></li>
+			<li class="divider"></li> -->
+			<li><a href="#" id="sign_out"><i class="icon icon-off"></i> Sign Out</a></li>
+		</ul>
+		
+	</li>
+	
+	{{/if}}
+	
+	{{#if showChangePasswordForm}}
+		{{> change_password_form}}
+	{{/if}}
+</template>
+
+<template name="change_password_form">
+	<div class="modal">
+		
+		<div class="modal-body">
+			<form id="change password">
+				<input type="password" id="password">
+				<input type="password" id="confirm_password">
+				<input type="submit" value="Chnage Password">
+			</form>
+		</div>
+		
+	</div>
+</template>

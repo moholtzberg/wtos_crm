@@ -1,0 +1,61 @@
+<template name="leases">
+	
+	{{#if checkCurrentModule "leases"}}
+	
+	<div class="col-md-6">
+		
+		<div class="panel panel-default">
+			
+			<div class="panel-heading">
+				
+				<h3 class="panel-title"></h3>
+				
+			</div>
+			
+			<div class="panel-body">
+				{{#isolate}}
+					{{> leases_list}}
+				{{/isolate}}
+			</div>
+			
+			<div class="panel-footer">
+				
+				<button id="new_lease" class="btn btn-primary btn-sm">New Lease</button>
+				
+			</div>
+			
+		</div>
+		
+	</div>
+	{{#if currentAction}}
+	<div class="col-md-6">
+		
+		<div class="panel panel-default">
+			
+			<div class="panel-heading">
+				<h3 class="panel-title"></h3>
+			</div>
+			
+			<div class="panel-body">
+				{{#if checkCurrentAction "new"}}
+					{{> leases_form}}
+				{{else}}
+					{{> leases_view}}
+				{{/if}}
+			</div>
+			
+			<div class="panel-footer">
+				
+				<a id="cancel" class="btn btn-sm cancel">Cancel</a>
+				
+				<button type="submit" form="save_lease" id="save_lease" class="btn btn-primary btn-sm save">Save Lease</a>
+				
+			</div>
+			
+		</div>
+		
+	</div>
+	{{/if}}
+	{{/if}}
+	
+</template>

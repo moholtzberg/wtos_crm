@@ -1,0 +1,18 @@
+<template name="tasks">
+	{{templateLogger "tasks"}}
+		
+	{{#if checkCurrentModule "tasks"}}
+	
+		{{> tasks_list}}
+		
+		{{#each actions}}
+		
+			{{#if checkCurrentAction this}}
+				{{> crud}}
+			{{/if}}
+			
+		{{/each}}
+		
+	{{/if}}
+	
+</template>

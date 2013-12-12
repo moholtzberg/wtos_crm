@@ -1,0 +1,39 @@
+<template name="configurations_list">
+	{{templateLogger "config_list"}}
+	<div class="container-fluid">
+		<table class="table table-hover table-condensed">
+			<tr>
+				<th>Name</th>
+				<th>Title</th>
+				<th>Customer</th>
+				<th>Email</th>
+				<th>Phone</th>
+				<th><span class="pull-right">Actions</span></th>
+			</tr>
+			{{#isolate}}
+			
+			{{#each record}}
+			
+				<tr>
+					<td>{{fullName}}</td>
+					<td>{{title}}</td>
+					<td>{{truncate customer.name length="20" ending="..."}}</td>
+					<td>{{email}}</td>
+					<td>{{phone}}</td>
+					<td>
+						<div class="btn-group pull-right">
+							<button id="view_contact_{{_id}}" contact_id="{{_id}}" class="btn btn-mini view_contact">View</button>
+							<button id="edit_contact_{{_id}}" contact_id="{{_id}}" class="btn btn-mini edit_contact">Edit</button>
+							<button id="delete_contact_{{_id}}" contact_id="{{_id}}" class="btn btn-mini delete_contact">Delete</button>
+						</div>
+					</td>
+				</tr>
+			
+			{{/each}}
+			{{/isolate}}
+		</table>
+		
+		<button id="new_configuration" class="btn btn-primary">New Configuration</button>
+		
+	</div>
+</template>

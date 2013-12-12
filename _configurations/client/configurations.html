@@ -1,0 +1,18 @@
+<template name="configurations">
+	{{templateLogger "configurations"}}
+		
+	{{#if checkCurrentModule "configurations"}}
+	
+		{{> configurations_list}}
+		
+		{{#each actions}}
+		
+			{{#if checkCurrentAction this}}
+				{{> crud}}
+			{{/if}}
+			
+		{{/each}}
+				
+	{{/if}}
+	
+</template>

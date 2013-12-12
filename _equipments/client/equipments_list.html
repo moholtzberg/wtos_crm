@@ -1,0 +1,16 @@
+<template name="equipments_list">
+	<table class="table table-hover table-condensed">
+		<tr>
+			<th>Make</th>
+			<th>Model</th>
+			<th>Serial</th>
+		</tr>
+		{{#each record}}
+		<tr href="/equipments/{{_id}}/" class="record {{#if checkCurrentModule 'equipments'}}{{#if checkCurrentId _id}}active {{/if}}{{/if}}" id="equipment_{{_id}}" equipment_id="{{_id}}" data-target="tab_view" data-toggle="tab">
+				<td>{{customer.name}}</td>
+				<td>{{make.name}} {{model.number}}</td>
+				<td>{{serial_number}}</td>
+		</tr>
+		{{/each}}
+	</table>
+</template>

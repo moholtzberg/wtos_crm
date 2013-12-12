@@ -1,0 +1,32 @@
+<template name="items_form">
+	
+	<fieldset>	
+		
+		<div class="row-fluid">
+			{{formInput "select" id="make_id" name="make_id" selectOptions=makes selectValue=record.make_id selectDisplay="name" span="6" label="Select Make"}}
+			{{formInput "select" id="model_id" name="model_id" selectOptions=models selectValue=record.model_id selectDisplay="number" span="6" label="Select Model"}}
+		</div>
+		
+		<div class="row-fluid">
+			{{formInput "text" id="number" name="number" value=record.number span="6" label="Item Number"}}
+			{{formInput "text" id="upc" name="upc" value=record.upc span="6" label="UPC"}}
+		</div>
+		
+		<div class="row-fluid">
+			{{formInput "text" id="description" name="description" value=record.description span="12" label="Description"}}
+		</div>
+		
+		<div class="row-fluid">
+			{{formInput "text" id="cost" name="cost" value=record.cost span="4" label="Default Cost"}}
+			{{formInput "text" id="price" name="price" value=record.price span="4" label="Default Price"}}
+			{{formInput "text" id="msrp" name="msrp" value=record.msrp span="4" label="MSRP"}}
+		</div>
+		
+		<div class="row-fluid">
+			{{formInput "select" id="item_category_id" name="item_category_id" selectOptions=models selectValue=record.item_category_id selectDisplay="name" span="6" label="Select Item Category"}}
+			{{formInput "select" id="config_category_id" name="config_category_id" selectOptions=models selectValue=record.config_category_id selectDisplay="name" span="6" label="Select Configuration Category"}}
+		</div>
+		
+	</fieldset>
+	
+</template>

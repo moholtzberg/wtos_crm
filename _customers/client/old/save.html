@@ -1,0 +1,47 @@
+<template name="customers_save">
+	{{templateLogger "customers_save"}}
+	
+	<hr />
+	
+	{{#if checkCurrentAction "new"}}
+			
+		<form id="save_customer" class="row" role="form">
+	
+			{{> customers_form}}
+	
+		</form>
+		
+	{{/if}}
+	
+	{{#if checkCurrentAction "view"}}
+			
+		<form id="save_customer" class="row" role="form">
+	
+			{{> customers_form}}
+	
+		</form>
+		
+	{{/if}}
+		
+	{{#if checkCurrentAction "contacts"}}
+	
+		<h3>Contacts for Customer</h3>
+		{{#each contacts}}
+			<li>{{this.fullName}}</li>
+		{{/each}}
+		
+	{{/if}}
+		
+	{{#if checkCurrentAction "tasks"}}
+	
+		{{> tasks_list}}
+		
+	{{/if}}
+		
+	{{#if checkCurrentAction "equipment"}}
+		
+		{{> equipments_list}}
+	
+	{{/if}}
+	
+</template>

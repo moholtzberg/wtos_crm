@@ -1,0 +1,47 @@
+<template name="crud">
+	{{templateLogger "crud"}}
+	<!-- <div class="mask"> </div>
+	
+	<div class="modal {{currentAction}}">
+		
+		<div class="modal-header">
+			<button id="close_{{currentModule singularize=true}}" type="button" class="close cancel">&times;</button> -->
+			<h3>{{currentModule capitalize=true}}: {{currentAction capitalize=true}}</h3>
+		<!-- </div>
+		
+		<div class="modal-body">
+			 -->
+			<form id="save_{{currentModule}}" class="container-fluid">
+				
+				{{#if checkCurrentAction "delete"}}
+				
+				<i class="icon-warning-sign icon-2x pull-left icon-border text-error"></i>
+				Are you sure you want to delete "{{record.fullName}}" ?
+				
+				{{else}}
+					{{{form}}}
+				{{/if}}
+				
+		</div>
+		
+		<!-- <div class="modal-footer"> -->
+			{{#unless checkCurrentAction "delete"}}
+				<a id="message_contact" class="btn message">Email</button>
+			{{/unless}}
+				<a id="cancel_{{currentModule singularize=true}}" class="btn cancel">Cancel</a>
+			{{#if checkCurrentAction "delete"}}
+				<a id="{{currentAction}}_{{currentModule singularize=true}}" class="btn btn-primary {{currentAction}}">Delete {{currentModule capitalize=true singularize=true}}</a>
+			{{else}}
+				{{#if checkCurrentAction "view"}}
+				<a id="edit_{{currentModule singularize=true}}" class="btn btn-primary edit">Edit {{currentModule capitalize=true singularize=true}}</a>
+				{{else}}
+				<button id="save_{{currentModule singularize=true}}" class="btn btn-primary {{currentAction}}" type="submit" value="submit">
+					Save {{currentModule capitalize=true singularize=true}}
+				</button>
+			</form>
+				{{/if}}
+			{{/if}}
+		<!-- </div>
+	</div> -->
+	
+</template>

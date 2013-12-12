@@ -1,0 +1,114 @@
+<template name="customers">
+	
+	{{#if checkCurrentModule "customers"}}
+	
+	<div class="col-md-6">
+		
+		<div class="panel panel-default">
+			
+			<div class="panel-heading">
+				<h3 class="panel-title"></h3>
+			</div>
+			
+			<div class="panel-body">
+				{{#isolate}}
+					{{> customers_list}}
+				{{/isolate}}
+			</div>
+			
+			<div class="panel-footer">
+				
+				<button id="toggleView" class="btn btn-primary btn-sm">Toggle</button>
+				
+				<button id="new_customer" class="btn btn-primary btn-sm">New Customer</button>
+				
+			</div>
+			
+		</div>
+		
+	</div>
+	{{#if currentAction}}
+	<div class="col-md-6">
+		
+		<div class="panel panel-default">
+			
+			<div class="panel-heading">
+				<h3 class="panel-title"></h3>
+			</div>
+			
+			<div class="panel-body">
+				{{#if checkCurrentAction "new"}}
+					{{> customers_form}}
+				{{else}}
+					{{> customers_view}}
+				{{/if}}
+			</div>
+			
+			<div class="panel-footer">
+				
+				<a id="cancel" class="btn btn-sm cancel">Cancel</a>
+				
+				<button type="submit" form="save_customer" id="save_customer" class="btn btn-primary btn-sm save">Save Customer</a>
+				
+			</div>
+			
+		</div>
+		
+	</div>
+	{{/if}}
+	{{/if}}
+	
+</template>
+
+<template name="customers1">
+	{{templateLogger "customers"}}
+		
+	{{#if checkCurrentModule "customers"}}
+		
+		<div class="row-fluid">
+			<div class="tabbable tabs-left container-fluid ">
+				
+				<ul id="module_list" class="nav nav-tabs span6 nav-collapse collapse navbar-responsive-collapse">
+					{{#if currentAction}}
+					
+					<div class="span6">
+						
+					{{else}}
+					
+					<div class="span12">
+						
+					{{/if}}		
+					
+					{{> customers_list}}
+				</ul>
+				
+			</div>
+			
+			{{#if checkCurrentAction "newTask"}}
+				
+			<div class="span6">
+				{{> tasks_save}}
+			</div>
+				
+			{{else}}
+				
+			{{#each actions}}
+			
+			<div class="span6">
+				{{#if checkCurrentAction this}}
+				
+					{{> customers_save}}
+						
+				{{/if}}
+			</div>
+		
+			{{/each}}
+					
+		{{/if}}
+		</div>
+	
+	</div>
+		
+	{{/if}}
+	
+</template>

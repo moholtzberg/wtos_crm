@@ -1,0 +1,29 @@
+<template name="customers_delete">
+	{{#if record}}
+	<div class="mask"> </div>
+	<div class="modal" data-backdrop="true">
+		<div class="modal-header">
+			<button id="close" type="button" class="close cancel">&times;</button>
+			<h3>Delete Customer</h3>
+		</div>
+		
+		<div class="modal-body">
+			{{#if error}}
+			<div class="alert alert-error">{{error}}</div>
+			{{/if}}
+			
+			<form id="delete_customer" class="container-fluid">
+				
+				<legend>General Info</legend>
+				<p>Are you sure you want to delete {{record.name}}?</p>
+			</form>
+			
+		</div>
+		
+		<div class="modal-footer">
+			<a id="cancel" class="btn cancel">Cancel</a>
+			<a id="delete_customer" class="btn btn-primary save">Delete Customer</a>
+		</div>
+	</div>
+	{{/if}}
+</template>

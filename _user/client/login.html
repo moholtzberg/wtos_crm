@@ -1,0 +1,194 @@
+<template name="login">
+	
+	<header class="row">
+		{{> nav}}
+	</header>
+	
+	<div class="row">
+		
+		<div id="login" class="well col-md-3">
+			{{#if registerForm}}
+				
+				{{> register_form}}
+				
+			{{else}}
+				
+				{{#if resetForm}}
+					{{> forgot_password}}
+				{{else}}
+					{{> login_form}}
+				{{/if}}
+				
+			{{/if}}
+			
+		</div>
+		
+	</div>
+	
+</template>
+
+<template name="login_form">
+	<form id="login-form">
+		
+		<fieldset>
+			
+			<legend>Login</legend>
+			
+			{{#if errors}}
+			<div class="alert alert-error">
+			  {{errors}}
+			</div>
+			{{/if}}
+			
+			<div class="row">
+				
+				<div class="form-group">
+					<label>Email</label>
+					<input type="email" class="form-control" id="login-email" />
+				</div>
+				
+				<div class="form-group">
+					<label>Password</label>
+					<input type="password" class="form-control" id="login-password" />
+				</div>
+				
+				<hr />
+				<input type="submit" target="#login_form" class="btn btn-primary btn-block" id="login-button" value="Sign in" />
+				<br />
+			</div>
+			
+		</fieldset>
+		
+	</form>
+	
+	<div class="row">
+			
+		
+		<a id="reset" class="btn btn-warning btn-block">Forgot Password</a>
+		<br />
+		<a id="register" class="btn btn-info btn-block">Create Account</a>
+	</div>
+	
+</template>
+
+<template name="register_form">
+	
+	<form id="register-form">
+		
+		<fieldset>
+			
+			<legend>Register</legend>
+			{{#if errors}}
+			<div class="alert alert-error">
+			  {{errors}}
+			</div>
+			{{/if}}
+			<div class="row-fluid">
+				
+				<div class="span6">
+					<label>First Name</label>
+					<input type="text" class="input-block-level" id="account-first_name" />
+				</div>
+				
+				<div class="span6">
+					<label>Last Name</label>
+					<input type="text" class="input-block-level" id="account-last_name" />
+				</div>
+				
+				<label>Email</label>
+				<input type="email" class="input-block-level" id="account-email" />
+				
+				<label>Password</label>
+				<input type="password" class="input-block-level" id="account-password" />
+				
+				<hr />
+				
+				<input type="submit" class="btn btn-primary btn-block" id="create-account" value="Create Account" />
+			
+			</div>
+			
+		</fieldset>
+		
+	</form>
+	
+	<div class="row-fluid">
+		<a id="cancel" class="btn span12">Cancel</a>
+	</div>
+	
+</template>
+
+<template name="forgot_password">
+	{{#if resetPassword}}
+		{{> reset_password_form}}
+	{{else}}
+		{{> reover_password_form}}
+	{{/if}}
+</template>
+
+<template name="reset_password_form">
+
+	<form id="new-password">
+		
+		<fieldset>
+			
+			<legend>Reset Password</legend>
+			{{#if errors}}
+			<div class="alert alert-error">
+			  {{errors}}
+			</div>
+			{{/if}}
+			
+			<div class="row-fluid">
+				
+				<label>Password</label>
+				<input type="password" class="input-block-level" id="new-password-password" />
+				
+				<hr />
+				
+				<input type="submit" class="btn btn-primary btn-block" value="Change Password" />
+				
+			</div>
+			
+		</fieldset>
+		
+	</form>
+	
+	<div class="row-fluid">
+		<a id="cancel" class="btn span12">Cancel</a>
+	</div>
+	
+</template>
+
+<template name="reover_password_form">
+
+	<form id="recovery-form">
+		
+		<fieldset>
+			
+			<legend>Recover Password</legend>
+			{{#if errors}}
+			<div class="alert alert-error">
+			  {{errors}}
+			</div>
+			{{/if}}
+			
+			<div class="row-fluid">
+				
+				<label>Email</label>
+				<input type="text" class="input-block-level" id="recovery-email" />
+				
+				<hr />
+				
+				<input type="submit" class="btn btn-primary btn-block" value="Reset Password" />
+				
+			</div>
+			
+		</fieldset>
+		
+	</form>
+	
+	<div class="row-fluid">
+		<a id="cancel" class="btn span12">Cancel</a>
+	</div>
+	
+</template>

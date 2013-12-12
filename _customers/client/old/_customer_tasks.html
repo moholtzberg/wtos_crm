@@ -1,0 +1,25 @@
+<template name="_customer_tasks">
+	{{templateLogger "_customer_tasks"}}
+	<div class="panel-group" id="accordion">
+		{{#each tasks}}
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4 class="panel-title">
+						{{#if complete}}<del>{{/if}}
+							<input type="checkbox" name="commplete" id="{{_id}}" value="{{complete}}" {{#if complete}}checked{{/if}}>
+							       
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse_{{_id}}">
+								{{description}} -- {{due_date}}
+							</a>
+						{{#if complete}}</del>{{/if}}
+					</h4>
+				</div>
+				<div id="collapse_{{_id}}" class="panel-collapse collapse">
+					<div class="panel-body">
+						<stong>Name: </strong>{{notes}}<br/>
+					</div>
+				</div>
+			</div>
+		{{/each}}
+	</div>
+</template>

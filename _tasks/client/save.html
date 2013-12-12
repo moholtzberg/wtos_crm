@@ -1,0 +1,35 @@
+<template name="tasks_save">
+	{{templateLogger "tasks_save"}}
+	<div class="mask"> </div>
+	
+	<div class="modal">
+		
+		<div class="modal-header">
+			<button id="close" type="button" class="close cancel">&times;</button>
+			<h3>{{moduleAction}}</h3>
+		</div>
+		
+		<div class="modal-body">
+			
+			<form id="save_task" class="container-fluid">
+				
+				{{> tasks_form}}
+				
+			</form>
+			
+		</div>
+		
+		<div class="modal-footer">
+			
+			<a id="cancel" class="btn cancel">Cancel</a>
+			{{#if currentAction "view"}}
+			<a id="edit_task" class="btn btn-primary edit">Edit Task</a>
+			{{else}}
+			<a id="save_task" class="btn btn-primary save">Save Task</a>
+			{{/if}}
+			
+		</div>
+		
+	</div>
+	
+</template>
