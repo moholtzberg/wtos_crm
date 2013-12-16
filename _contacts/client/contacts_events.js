@@ -1,15 +1,24 @@
 Template.contacts.events({
   'click button#new_contact' : function (event) {
 		event.preventDefault();
-		// Session.set("currentAction", "new");
 		Meteor.Router.to("/contacts/new");
-		Session.set("contactId", null);
+		Session.set("recordId", null);
 	},
 	
-	'click a.record': function (event, template) {
-		var customer_id = $("#" + event.currentTarget.id.toString()).attr("contact_id");
+	'click tr.record': function(event, template) {
+		customer_id = $("#" + event.currentTarget.id.toString()).attr("record_id");
 		Meteor.Router.to("/contacts/" + customer_id);
-		// Session.set("tabs", "view");
+		Session.set("currentAction", "view");
+  },
+	
+	'click a.subModule' : function(event) {
+		var subModule = $("#" + event.currentTarget.id.toString()).attr("id");
+		Session.set("currentAction", subModule);
+	},
+	
+	'click a.page': function(event) {
+		event.preventDefault();
+		Session.set("page", event.currentTarget.id);
 	},
 
 	'submit form#save_contact': function (event, template) {
@@ -39,13 +48,5 @@ Template.contacts.events({
 			
 		}
   }
-});
 
-Template.contacts_view.events({
-	
-	'click a.subModule' : function(event) {
-		var subModule = $("#" + event.currentTarget.id.toString()).attr("id");
-		Session.set("currentAction", subModule);
-	}
-	
 });

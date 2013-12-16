@@ -14,7 +14,13 @@ Customer.prototype = {
   }, 
 	
 	contacts: function () {
-		return	Contacts.find({customer_id: this._id});
+		if (this.record) {
+			var self = this.record;
+		} else {
+			var self = this; 
+		};
+		console.log(Contacts.find({customer_id: self._id}).fetch());
+		return Contacts.find({customer_id: self._id}).fetch();
 	},
 	
 	notContacted: function () {

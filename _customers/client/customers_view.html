@@ -19,6 +19,9 @@
 		<li {{#if checkCurrentAction "view"}}class="active"{{/if}}>
 			<a href="/customers/{{record._id}}#view" data-target="#" class="subModule" id="view" data-toggle="tab">View / Edit</a>
 		</li>
+		<li {{#if checkCurrentAction "contacts"}}class="active"{{/if}}>
+			<a href="/customers/{{record._id}}#contacts" data-target="#" class="subModule" id="contacts" data-toggle="tab">Contacts</a>
+		</li>
 		<li {{#if checkCurrentAction "equipments"}}class="active"{{/if}}>
 			<a href="/customers/{{record._id}}#equipments" data-target="#" class="subModule" id="equipments" data-toggle="tab">Equipments</a>
 		</li>

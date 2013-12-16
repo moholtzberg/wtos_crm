@@ -1,9 +1,7 @@
-//============================ Model definition
 Message = function (doc) {
   _.extend(this, doc);
 };
 
-//============================ Model propery definition 
 Message.prototype = {
 	constructor: Message,
 	
@@ -46,14 +44,12 @@ Message.prototype = {
 	}
 };
 
-//============================ Transform the collection
 Messages = new Meteor.Collection("messages", {
 	transform: function (doc) {
 		return new Message(doc);
 	}
 });
 
-//============================ Subscribe  
 Meteor.subscribe("Messages");
 
 Template.messages_list.record = function() {
@@ -91,14 +87,14 @@ Template.messages_create.events({
 	}
 })
 
-Template.messages_stub.records = function () {
-	module = Session.get("currentModule");
-	record_id = Session.get(module + "Id");
-	collection = capitalize(module);
-	field_id = _.singularize(module) + "_id";
-	collection = eval(collection);
-	return collection.find({field_id: record_id});
-}
+// Template.messages_stub.records = function () {
+// 	module = Session.get("currentModule");
+// 	record_id = Session.get(module + "Id");
+// 	collection = capitalize(module);
+// 	field_id = _.singularize(module) + "_id";
+// 	collection = eval(collection);
+// 	return collection.find({field_id: record_id});
+// }
 
 Template.messages_create.rendered = function () {
 	console.log("Rendered");

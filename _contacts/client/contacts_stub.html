@@ -1,0 +1,25 @@
+<template name="contacts_stub">
+	<div class="panel-group" id="accordion">
+		{{#if record.contacts}}
+			{{#each record.contacts}}
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4 class="panel-title">
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse_{{_id}}">
+								{{this.fullName}}
+							</a>
+						</h4>
+					</div>
+					<div id="collapse_{{_id}}" class="panel-collapse collapse">
+						<div class="panel-body">
+							{{> contacts_view}}
+						</div>
+					</div>
+				</div>
+			{{/each}}
+				
+		{{else}}
+			<p>No Contacts</p>
+		{{/if}}
+	</div>
+</template>

@@ -10,12 +10,9 @@ Template.customers.events({
 	},
 	
 	'click button#new_customer' : function(event) {
-		console.log("Clicked New Customer");
 		event.preventDefault();
-		Session.set("customerId", null);
+		Session.set("recordId", null);
 		Meteor.Router.to("/customers/new/");
-		// Session.set("tabs", "new");
-		Session.set("currentAction", "new");
 	},
 	
 	'submit form#save_customer' : function (event) {
@@ -56,25 +53,6 @@ Template.customers.events({
 		Session.set("currentAction", subModule);
 	},
 	
-	'change input[type="checkbox"]': function (event, template) {
-		task_id = $("#" + event.currentTarget.id).attr("id");
-		checked = $("#" + event.currentTarget.id).attr('checked');
-		if (checked === "checked") {
-			Tasks.update({_id: task_id}, {$set: {complete: true, completed_at: new Date()}});
-		} else {
-			Tasks.update({_id: task_id}, {$set: {complete: false}});
-		};
-		
-	}
-});
-
-Template.customers_list.events({
-	'click button#new_customer': function(event) {
-		event.preventDefault();
-		Session.set("currentAction", "new");
-		console.log(Session.get("currentAction"));
-	},
-	
 	'click a.page': function(event) {
 		event.preventDefault();
 		Session.set("page", event.currentTarget.id);
@@ -84,7 +62,6 @@ Template.customers_list.events({
 		customer_id = $("#" + event.currentTarget.id.toString()).attr("record_id");
 		Meteor.Router.to("/customers/" + customer_id);
 		Session.set("currentAction", "view");
-		// Session.set("tabs", "view");
-  },
-	
+  }
+
 });
