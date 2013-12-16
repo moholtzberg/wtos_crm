@@ -6,11 +6,21 @@ Contact.prototype = {
   constructor: Contact,
 	
 	owner: function() {
-		// return Users.findOne({_id: this.user_id}).full_name();
+		if (this.record) {
+			var self = this.record;
+		} else {
+			var self = this;
+		};
+		return Users.findOne({_id: self.customer().user_id}).full_name();
 	},
 	
 	customer: function () {
-		return Customers.findOne({_id: this.customer_id});
+		if (this.record) {
+			var self = this.record;
+		} else {
+			var self = this;
+		};
+		return Customers.findOne({_id: self.customer_id});
 	},
 	
 	messages: function () {
@@ -23,7 +33,12 @@ Contact.prototype = {
 	},
 	
   fullName: function () {
-		return this.first_name + " " + this.last_name;
+		if (this.record) {
+			var self = this.record;
+		} else {
+			var self = this;
+		};
+		return self.first_name + " " + self.last_name;
   },
 	
 	neverContacted: function () {

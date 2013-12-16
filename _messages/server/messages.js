@@ -34,7 +34,13 @@ Messages.allow({
 });
 
 Meteor.publish("Messages", function () {
-  return Messages.find({user_id: this.userId});
+	var customerIds = Customers.find({user_id : this.userId}).map(function(customer) {
+		return customer._id;
+	});
+	var contactIds = Contacts.find({customer_id: {$in: customerIds}}).map(function(customer) {
+		return customer.email;
+	});
+  return Messages.find({to: {$in: contactIds}});
 });
 
 Meteor.methods({
