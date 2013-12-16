@@ -18,7 +18,7 @@
 		
 		{{#each record}}
 			<tr href="/customers/{{_id}}/" class="record {{#if checkCurrentModule 'customers'}}{{#if checkCurrentId _id}}active{{/if}}{{/if}}" id="customer_{{_id}}" record_id="{{_id}}" data-target="tab_view" data-toggle="tab">
-				<td>{{name}}</td>
+				<td>{{truncate name length="25" ending="..."}}</td>
 				<td>{{owner}}</td>
 			</tr>
 		{{/each}}

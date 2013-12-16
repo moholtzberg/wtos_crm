@@ -18,3 +18,4 @@ datestrap
 moment
 mongo-ext
 inflections
+truncate
