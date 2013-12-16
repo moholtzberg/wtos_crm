@@ -1,0 +1,24 @@
+<template name="messages_form">
+	
+	<form id="create_email">
+
+		<fieldset>
+
+			<div class="row-fluid controls controls-row">
+				<input type="text" id="email_to" placeholder="Enter Recipient" value="{{contact.email}}" class="span12">
+			</div>
+
+			<div class="row-fluid controls controls-row">
+				<input type="text" id="subject" placeholder="Subject" value="{{record.subject}}" class="span12">
+			</div>
+
+			<div class="row-fluid controls controls-row">
+				<div id="email_tmp_text">{{> welcome_email}}</div>
+				<textarea id="body" placeholder="Body" rows="4" class="span12"></textarea>
+			</div>
+
+		</fieldset>
+
+	</form>
+	
+</template>

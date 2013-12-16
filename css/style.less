@@ -6,6 +6,7 @@
 @darkGreyAccent: #2d323d;
 
 @lightGrey: #eeeeee;
+@lightBlue: #428bca;
 
 @darkBlue: #36a9e1;
 @darkblueAccent: #1e8fc6;
@@ -184,6 +185,25 @@ body {
 .pagination {
 	margin: 0 !important;
 }
+
 .panel-backdrop-grey {
 	background-color: @lightGrey;
+}
+
+.panel-backdrop-blue {
+	background-color: @lightBlue;
+	color: white;
+}
+/*
+.panel-backdrop-blue + .panel-backdrop-grey {
+	border-top: 1px solid @lightBlue;
+	border-bottom: 1px solid @lightBlue;
+}*/
+
+.no_padding {
+	padding: 0 !important;
+}
+
+.panel-heading + .panel-body > .panel-heading {
+	border-radius: 0;
 }

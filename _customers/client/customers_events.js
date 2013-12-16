@@ -1,4 +1,5 @@
 Template.customers.events({
+	
 	'click button#toggleView' : function(event) {
 		console.log("Clicked Toggle");
 		event.preventDefault();

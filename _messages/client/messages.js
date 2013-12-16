@@ -50,51 +50,105 @@ Messages = new Meteor.Collection("messages", {
 	}
 });
 
-Meteor.subscribe("Messages");
-
-Template.messages_list.record = function() {
-	return Messages.find().fetch();
-};
-
-Template.messages_create.contact = function () {
-	console.log(Session.get("contactId"));
-	return Contacts.findOne({_id: Session.get("contactId")});
-}
-
-Template.messages_create.template = function () {
-	return Template.find('.template_text');
-}
-
-Template.messages_create.events({
-	'click #close, click #cancel': function (event) {
-		event.preventDefault();
-		Session.set("currentAction", "list");
+Messages.prototype = {
+	
+	page: function(page, per_page) {
+		if (!page || page === undefined || page === null) {
+			page = 1;
+			Session.set("page", page)
+		};
+		if (!per_page) {
+			per_page = 10;
+			Session.set("per_page", per_page)
+		};
+		return Messages.find({}, {sort: {sent_at: 1}, skip: (page - 1) * per_page, limit: per_page})
 	},
 	
-	'click #save_message': function (event) {
-		event.preventDefault();
-		var email = $('#email_to').val();
-		var subj = $('#subject').val();
-		var body = $('#body').val();
-		
-		console.log(email);
-		console.log(subj);
-		console.log(body);
-		
-		Meteor.call("sendEmail", email, subj, body, body);
-		Session.set("currentAction", "list");
-		
-	}
-})
+	pages: function() {
+		per_page = Session.get("per_page");
+		result = Messages.find().count();
+		tot_pages = Math.ceil(result/per_page);
+		return tot_pages;
+	},
+	
+	paginated: function() {
+		var pages = parseInt(this.pages());
+		var page = parseInt(Session.get("page"));
+		var pagination = new Array();
+		var range = parseInt(Session.get("range")) || 10;
 
-// Template.messages_stub.records = function () {
-// 	module = Session.get("currentModule");
-// 	record_id = Session.get(module + "Id");
-// 	collection = capitalize(module);
-// 	field_id = _.singularize(module) + "_id";
-// 	collection = eval(collection);
-// 	return collection.find({field_id: record_id});
-// }
+		if (pages > range) {
+			if (page === 1) {
+				min = 1;
+				max = range;
+			} else if(page > 1 && page < pages) {
+				min = Math.max(1, page - (Math.floor((range-1) /2)));
+				max = Math.min(pages, page + (Math.ceil((range-1) /2)));
+				if (range - (max-min) > 0) {
+					var off = range - (max-min);
+					if (min - off < 1) {
+						max = max + off - 1;
+					} else if(max + off > pages) {
+						min = min - off + 1;
+					};
+				} 
+			} else if(page === pages) { 
+				min = ((pages - range) + 1);
+				max = pages;
+			};
+			
+		} else {
+			min = 1;
+			max = pages;
+		}	
+		
+		for (var i = min; i < max+1; i++) {
+			if (i >= min && i <= max) {
+				pagination.push(i.toString())
+			}
+		};
+		return pagination;	
+	}
+	
+}
+
+Meteor.subscribe("Messages");
+
+Template.messages_list.helpers({
+	
+	pagination: function() {
+		return Messages.prototype.paginated();
+	},
+	
+	page: function() {
+		return Session.get("page");
+	},
+	
+	record: function() {
+		return Messages.prototype.page(Session.get("page"), Session.get("per_page"));
+	}
+	
+});
+
+Template.messages_view.helpers({
+	
+	record: function() {
+		return Messages.findOne({_id: Session.get("recordId")});
+	}
+	
+});
+
+Template.messages_form.helpers({
+
+	contact: function() {
+		return Contacts.findOne({_id: Session.get("contactId")});
+	},
+	
+	template: function() {
+		return Template.find('.template_text');
+	}
+	
+});
 
 Template.messages_create.rendered = function () {
 	console.log("Rendered");
@@ -103,20 +157,19 @@ Template.messages_create.rendered = function () {
 	$('#body').html(email_txt.html());
 }
 
-Template.welcome_email.to = function() {
-	// console.log(contact_id);
-	// var c = Contacts.findOne({_id: contact_id});
-	// console.log(c);
-	var contact = Contacts.findOne({_id: Session.get("contactId")});
+Template.welcome_email.helpers({
+	//methods need to be checked for compatability
 	
-	return contact;
-}
-
-Template.welcome_email.from = function() {
-	return Meteor.user().profile;
-}
-
-Template.welcome_email.equipment = function(customer_id) {
-	var customer = Customers.findOne(customer_id);
-	return customer;
-}
+	to: function() {
+		return Contacts.findOne({_id: Session.get("contactId")});
+	},
+	
+	from: function() {
+		return Meteor.user().profile;
+	},
+	
+	equipment: function(customer_id) {
+		return Customers.findOne(customer_id);
+	}
+	
+});

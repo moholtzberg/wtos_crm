@@ -1,0 +1,40 @@
+<template name="messages_view">
+	{{#unless checkCurrentAction "new"}}
+	<!-- <div class="panel panel-primary"> -->
+		
+		<div class="panel-heading panel-backdrop-blue">
+			
+			<h4 class="panel-title">
+				{{record.subject}} <span class="label label-{{this.stage.label_class}} pull-right">{{record.stage.message}}</span>
+			</h4>
+			
+		</div>
+		
+		<!-- <div class="panel-collapse"> -->
+			
+			<div class="panel-body panel-backdrop-grey">
+				<strong>Sent:</strong> <span class="pull-right">{{record.sent_at}}</span><br/>
+				<strong>To:</strong> <span class="pull-right">{{record.to}}</span> <br/>
+				<strong>From:</strong> <span class="pull-right">{{record.from}}</span> <br/>
+			
+				{{#if recprd.delivered.status}}
+				<strong>Delivered:</strong> <span class="pull-right">{{record.delivered.time_stamp}}</span><br/>
+				{{/if}}
+			
+				{{#if record.opened.status}}
+				<strong>Opened:</strong> <span class="pull-right">{{record.opened.time_stamp}}</span><br/>
+				<strong>Device Type:</strong> <span class="pull-right">{{record.opened.client_os}} {{record.opened.device_type}}</span><br/>
+				<strong>Location:</strong> <span class="pull-right">{{record.opened.city}}</span><br/>
+				<strong>IP Address:</strong> <span class="pull-right">{{record.opened.ip_address}}</span>
+				{{/if}}
+			</div>
+			
+			<div class="panel-body">
+				{{{record.html}}}
+			</div>
+		
+		<!-- </div> -->
+	
+	<!-- </div> -->
+	{{/unless}}
+</template>

@@ -1,50 +1,58 @@
 <template name="messages">
-	{{templateLogger "messages"}}
-		
 	{{#if checkCurrentModule "messages"}}
 	
-		{{> messages_list}}
-	
-		{{#if action "new"}}
-			{{> messages_create}}
-		{{/if}}
-	
-		{{#if action "edit"}}
-			{{> messages_update}}
-		{{/if}}
-	
-		{{#if action "view"}}
-			{{> messages_show}}
-		{{/if}}
-	
+	<div class="col-md-6">
+		
+		<div class="panel panel-default">
+			
+			<div class="panel-heading">
+				<h3 class="panel-title"></h3>
+			</div>
+			
+			<div class="panel-body">
+				{{#isolate}}
+					{{> messages_list}}
+				{{/isolate}}
+			</div>
+			
+			<div class="panel-footer">
+				
+				<button id="new_message" class="btn btn-primary btn-sm">New Message</button>
+				
+			</div>
+			
+		</div>
+		
+	</div>
+	{{#if currentAction}}
+	<div class="col-md-6">
+		
+		<div class="panel panel-default">
+			
+			<div class="panel-heading">
+				<h3 class="panel-title"></h3>
+			</div>
+			
+			<div class="panel-body no_padding">
+				{{#if checkCurrentAction "new"}}
+					{{> messages_form}}
+				{{else}}
+					{{> messages_view}}
+				{{/if}}
+			</div>
+			
+			<div class="panel-footer">
+				
+				<a id="cancel" class="btn btn-sm cancel">Cancel</a>
+				
+				<button type="submit" form="save_message" id="save_customer" class="btn btn-primary btn-sm save">Save Message</a>
+				
+			</div>
+			
+		</div>
+		
+	</div>
+	{{/if}}
 	{{/if}}
 	
-</template>
-
-<template name="welcome_email">
-<p>Hi, {{to.first_name}}</p>
-
-<p>Hope all is well with you. My name is Moshe from World Trade Copiers.</p>
-
-<p>My colleague Norman explained to me that {{to.customer.name}} has {{equipment to.customer._id}} copiers, and the lease on them is set to expire very soon.</p>
-
-<p>We’d love to see if we can provide you better value. Here are just a few of the services we offer:
-<ul>
-<li>Guaranteed 4-hour service responses or a 25% refund on your bill</li>
-<li>20% to 40% savings on maintenance</li>
-<li>Optimize technologies we sell to meet the needs of your business</li>
-<li>Lease buy outs, to replace your old equipment with brand-new machines</li>
-</ul>
-<p>{{to.first_name}}, please let me know if we could set up a time to talk at your convenience?</p>
-
-<p>I’d be interested in learning more about your business, so we could discuss how we can help meet your needs.</p>
-
-<p>Best regards,</p>
-
--- 
-<p><strong>{{from.name}}</strong><br/>
-World Trade Office Solutions<br/>
-{{from.address}}<br/>
-{{from.city}}, {{from.state}} {{from.zip}}<br/>
-{{from.phone}}</p>
 </template>
