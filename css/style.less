@@ -20,6 +20,11 @@
 	-moz-box-shadow: @h_shaddow @v_shaddow @blur @spread @color @inset;
 	box-box-shadow: @h_shaddow @v_shaddow @blur @spread @color @inset;
 }
+.centerBlock {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
 
 html, body {
 	height: 100%;
@@ -131,12 +136,12 @@ body {
 	padding-right: 0;
 }
 
-.center {
+/*.center {
 	margin: auto;
 	margin-top: 10%;
 	float: none !important;
-/*	padding: 20px;*/
-}
+	padding: 20px;
+}*/
 
 .widget {
 	.RoundedCorners;
@@ -172,4 +177,8 @@ body {
 	background: transparent;
 	line-height: 0;
 	height: 0;
+}
+
+.center-block {
+	.centerBlock();
 }

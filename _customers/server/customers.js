@@ -8,10 +8,11 @@ Meteor.startup(function(){
 
 Meteor.publish("Customers", function (page_no) {
 	user = Meteor.users.findOne({_id: this.userId});
+	console.log(user);
 	if (user.is_admin || user.profile.is_admin) {
-		return Customers.find({vendor: false}, {sort: {name: 1}});
+		return Customers.find({}, {sort: {name: 1}});
 	} else {
-		return Customers.find({user_id: this.userId, vendor: false});
+		return Customers.find({user_id: this.userId});
 	};
 });
 

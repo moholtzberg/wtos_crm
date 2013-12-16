@@ -1,9 +1,8 @@
 Handlebars.registerHelper("templateLogger", function (templateName) {
-	console.log("Template Rendered " + templateName);
+	// console.log("Template Rendered " + templateName);
 });
 
 Handlebars.registerHelper("subModule", function (record) {
-	console.log(record);
 	if (Session.get("currentModule") !== "view") {
 		if (Template[Session.get("currentAction") + "_stub"]()) {
 			return new Handlebars.SafeString(Template[Session.get("currentAction") + "_stub"]({record: record}));

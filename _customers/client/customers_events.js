@@ -69,14 +69,19 @@ Template.customers.events({
 });
 
 Template.customers_list.events({
-	'click button#new_customer' : function (event) {
+	'click button#new_customer': function(event) {
 		event.preventDefault();
 		Session.set("currentAction", "new");
 		console.log(Session.get("currentAction"));
 	},
 	
-	'click a.record': function (event, template) {
-		customer_id = $("#" + event.currentTarget.id.toString()).attr("customer_id");
+	'click a.page': function(event) {
+		event.preventDefault();
+		Session.set("page", event.currentTarget.id);
+	},
+	
+	'click tr.record': function(event, template) {
+		customer_id = $("#" + event.currentTarget.id.toString()).attr("record_id");
 		Meteor.Router.to("/customers/" + customer_id);
 		Session.set("currentAction", "view");
 		// Session.set("tabs", "view");
