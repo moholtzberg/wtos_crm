@@ -27,6 +27,15 @@ Lease.prototype = {
 		return Customers.findOne({_id: this.customer_id});
 	},
 	
+	leasingCompany: function() {
+		if (this.record) {
+			var self = this.record;
+		} else {
+			var self = this; 
+		};
+		return Customers.findOne({_id: self.vendor_id});
+	},
+	
 	endDate: function () {
 		// var start = new Date(this.start_date);
 		// var end = new Date(start.setMonth(start.getMonth() + this.lease_term));
