@@ -15,7 +15,12 @@ Lease.prototype = {
   }, 
 	
 	equipments: function () {
-		return	Equipments.find({lease_id: this._id});
+		if (this.record) {
+			var self = this.record;
+		} else {
+			var self = this; 
+		};
+		return Equipments.find({lease_id: self._id}).fetch();
 	},
 	
 	customer: function () {

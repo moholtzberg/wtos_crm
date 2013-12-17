@@ -37,7 +37,16 @@ Customer.prototype = {
 			var self = this; 
 		};
 		return Leases.find({customer_id: self._id}).fetch();
-	}
+	},
+	
+	equipments: function () {
+		if (this.record) {
+			var self = this.record;
+		} else {
+			var self = this; 
+		};
+		return Equipments.find({customer_id: self._id}).fetch();
+	},
 	
 };
 

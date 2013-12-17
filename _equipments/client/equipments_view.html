@@ -9,8 +9,8 @@
 		<li {{#if checkCurrentAction "view"}}class="active"{{/if}}>
 			<a href="/equipments/{{record._id}}#view" data-target="#" class="subModule" id="view" data-toggle="tab">View / Edit</a>
 		</li>
-		<li {{#if checkCurrentAction "leases"}}class="active"{{/if}}>
-			<a href="/equipments/{{record._id}}#leases" data-target="#" class="subModule" id="leases" data-toggle="tab">Leases</a>
+		<li {{#if checkCurrentAction "lease"}}class="active"{{/if}}>
+			<a href="/equipments/{{record._id}}#lease" data-target="#" class="subModule" id="leases" data-toggle="tab">Leases</a>
 		</li>
 	</ul>
 	{{/isolate}}

@@ -5,7 +5,7 @@ Equipment = function (doc) {
 
 //============================ Model propery definition 
 Equipment.prototype = {
-  constructor: Equipment,
+	constructor: Equipment,
 	
 	customer: function () {
 		return Customers.findOne({_id: this.customer_id});
@@ -23,10 +23,17 @@ Equipment.prototype = {
 		return Customers.findOne({_id: this.competitor_id});
 	},
 	
-  owner: function () {
+	owner: function () {
 		return Meteor.users.findOne({_id: this.user_id});
-		// return user.username || user.emails[0].address;
-  }
+	},
+	
+	lease: function() {
+		return Leases.find({_id: this.lease_id}).fetch()
+	},
+	
+	leased: function() {
+		return this.lease_id? true : false;
+	}
 	
 };
 

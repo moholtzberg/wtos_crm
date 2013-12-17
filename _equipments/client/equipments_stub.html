@@ -1,3 +1,26 @@
 <template name="equipments_stub">
-	<h1>Equipment Stub</h1>
+	<div class="panel-group" id="accordion">
+		{{#if record.equipments}}
+			{{#each record.equipments}}
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4 class="panel-title">
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse_{{_id}}">
+								{{this.make.name}} {{this.model.number}}
+							</a>
+						</h4>
+					</div>
+					<div id="collapse_{{_id}}" class="panel-collapse collapse">
+						<div class="panel-body">
+							{{this.number}}
+							{{this.serial_number}}
+						</div>
+					</div>
+				</div>
+			{{/each}}
+				
+		{{else}}
+			<p>No Contacts</p>
+		{{/if}}
+	</div>
 </template>

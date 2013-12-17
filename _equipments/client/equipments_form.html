@@ -7,6 +7,7 @@
 			<div id="make_id" class="form-group col-md-6">
 				<label>Make</label>
 				<select id="make_id" name="make_id" value="{{record.make_id}}" class="form-control input-sm">
+					<option disabled>Select One</option>
 					{{#each makes}}
 					<option value="{{_id}}" {{selected _id record.make_id "selected"}}>{{name}}</option>
 					{{/each}}
@@ -16,6 +17,7 @@
 			<div id="model_id" class="form-group col-md-6">
 				<label>Model</label>
 				<select id="model_id" name="model_id" value="{{record.model_id}}" class="form-control input-sm">
+					<option disabled>Select One</option>
 					{{#each models}}
 					<option value="{{_id}}" {{selected _id record.model_id "selected"}}>{{number}}</option>
 					{{/each}}
@@ -35,6 +37,7 @@
 			<div id="customer_id" class="form-group col-md-6">
 				<label>Customer</label>
 				<select id="customer_id" name="customer_id" value="{{record.customer_id}}" class="form-control input-sm">
+					<option disabled>Select One</option>
 					{{#each customers}}
 					<option value="{{_id}}">{{name}}</option>
 					{{/each}}
@@ -44,6 +47,7 @@
 			<div id="customer_id" class="form-group col-md-6">
 				<label>Lease</label>
 				<select id="lease_id" name="lease_id" value="{{record.lease_id}}" class="form-control input-sm">
+					<option disabled>Select One</option>
 					{{#each leases}}
 					<option value="{{_id}}">{{start_date}} - {{endDate}}</option>
 					{{/each}}
@@ -70,9 +74,9 @@
 					</span>
 				
 					<input type="text" id="tac" name="tac" class="form-control input-sm dropdown-toggle" {{#unless prospect}}disabled{{/unless}} value="{{reocrd.tac}}">
-
+					
 				</div>
-			
+				
 				<div class="dropdown open">
 					{{#if searchResults}}
 					<ul role="menu" areia-labelledby="tac" class="dropdown-menu">

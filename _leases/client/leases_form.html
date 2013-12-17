@@ -17,6 +17,7 @@
 			<div id="customer_id" class="form-group col-md-6">
 				<label>Customer</label>
 				<select id="customer_id" name="customer_id" class="form-control input-sm">
+					<option disabled>Select One</option>
 					{{#each customers}}
 					<option value="{{_id}}" {{selected _id record.customer_id "selected"}}>{{name}}</option>
 					{{/each}}
@@ -26,6 +27,7 @@
 			<div id="vendor_id" class="form-group col-md-6">
 				<label>Vendor</label>
 				<select id="vendor_id" name="vendor_id" class="form-control input-sm">
+					<option disabled>Select One</option>
 					{{#each vendors}}
 					<option value="{{_id}}" {{selected _id record.vendor_id "selected"}}>{{name}}</option>
 					{{/each}}
