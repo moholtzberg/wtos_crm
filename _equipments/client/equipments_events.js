@@ -18,9 +18,13 @@ Template.equipments.events({
 		record_id = $("#" + event.currentTarget.id.toString()).attr("equipment_id");
 		Meteor.Router.to("/equipments/" + record_id);
 		Session.set("currentAction", "view");
-		// Session.set("tabs", "view");
-  },
-
+	},
+	
+	'click a.subModule' : function(event) {
+		var subModule = $("#" + event.currentTarget.id.toString()).attr("id");
+		Session.set("currentAction", subModule);
+	},
+	
 	'submit form#save_equipment' : function (event) {
 		event.preventDefault();
 		if (Session.get("currentAction") === "new") {

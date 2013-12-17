@@ -4,6 +4,7 @@
 		
 		<thead>
 			<tr>
+				<th>Title</th>
 				<th>First Name</th>
 				<th>Last Name</th>
 				<th>Owner</th>
@@ -14,6 +15,7 @@
 		
 		{{#each record}}
 			<tr href="/contacts/{{_id}}/" class="record {{#if checkCurrentModule 'contacts'}}{{#if checkCurrentId _id}}active{{/if}}{{/if}}" id="contact_{{_id}}" record_id="{{_id}}" data-target="tab_view" data-toggle="tab">
+				<td>{{title}}</td>
 				<td>{{truncate first_name length="20" ending="..."}}</td>
 				<td>{{truncate last_name length="20" ending="..."}}</td>
 				<td>{{owner}}</td>

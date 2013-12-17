@@ -27,12 +27,18 @@ Equipment.prototype = {
 		return Meteor.users.findOne({_id: this.user_id});
 	},
 	
-	lease: function() {
-		return Leases.find({_id: this.lease_id}).fetch()
+	leases: function() {
+		// if (this.record) {
+		// 	var self = this.record;
+		// } else {
+		// 	var self = this; 
+		// };
+		var self = this.record ? this.record : this;
+		return Leases.find({_id: self.lease_id}).fetch()
 	},
 	
 	leased: function() {
-		return this.lease_id? true : false;
+		return this.lease_id ? true : false;
 	}
 	
 };
@@ -86,6 +92,14 @@ Template.equipments_form.helpers({
 		return Leases.find({customer_id: Session.get("leaseCustomerId")});
 	}
 
+});
+
+Template.equipments_view.helpers({
+	
+	record: function() {
+		return Equipments.findOne({_id: Session.get("recordId")});
+	}
+	
 });
 
 Template.equipments_list.record = function() {

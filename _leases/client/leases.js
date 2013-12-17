@@ -46,6 +46,14 @@ Leases = new Meteor.Collection("leases", {
 
 Meteor.subscribe("Leases");
 
+Template.leases_view.helpers({
+	
+	record: function() {
+		return Leases.findOne({_id: Session.get("recordId")});
+	}
+	
+})
+
 Template.leases_form.helpers({
 	
 	record: function() {
