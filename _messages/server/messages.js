@@ -6,7 +6,7 @@ Meteor.startup(function(){
 	};
 });
 
-process.env.MAIL_URL = 'smtp://postmaster%40moholtzberg.mailgun.org:3nvcayl0a1p8@smtp.mailgun.org:587';
+process.env.MAIL_URL = 'check mailgun site'; //remove from here move to config hidden config file
 	
 Meteor.startup(function () {
 	
